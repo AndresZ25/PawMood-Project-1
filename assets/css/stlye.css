@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 10px 20px 30px;
+  
+}
+
+header {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px;
+    text-align: center;
+    background-color:sandybrown;
+    color: rgb(15, 12, 7);
+    marker: none;
+
+}
+
+textarea {
+    margin-top: 50px;
+    margin-left: 40px;
+    
+    
+}
+
+select {
+    padding: 10px 25px ;
+
+}
+
+label {
+    font-size:x-large;
+    padding-right: 10px;
+}
+

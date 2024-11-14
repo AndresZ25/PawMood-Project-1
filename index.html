@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paw Mood - Track Your Dogs Mood</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="assets/css/stlye.css">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -15,11 +15,14 @@
 
 
     <header>
-        <h1 class="app-title"><i class="fa-solid fa-paw"></i>PawMood</h1>
+        <img src="assets/image/dog pic.jpg"/>
+
+        <h1 class="app-title">PawMood<i class="fa-solid fa-paw"></i></h1>
         <p>To Track Your Dog's Emotions Daily !! </p>
     </header>
 
     <main>
+    
         <div class="Mood selector">
             <label for="Mood">Mood Picker</label>
             <select id="Mood">
@@ -30,7 +33,8 @@
                 <option value="Hungry">Hungry</option>
             </select>
             <textarea id="notes" placeholder="Add notes here.."></textarea>
-
+            <button onclick="saveMood()">Save Mood</button>
+         
         </div>
         <div class="Mood-history">
         <h2>Week Mood history</h2>   
