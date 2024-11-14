@@ -6,6 +6,7 @@ body {
     font-family:'Times New Roman', Times, serif;
     text-align: center;
     padding: 10px 20px 30px;
+    font-size: x-large;
   
 }
 
@@ -22,6 +23,7 @@ header {
 textarea {
     margin-top: 50px;
     margin-left: 40px;
+    align-items: center;
     
     
 }
@@ -36,3 +38,10 @@ label {
     padding-right: 10px;
 }
 
+button {
+    margin: 200px;
+    background-color: green;
+    color: white;
+    padding: 20px 20px 20px;
+
+}
