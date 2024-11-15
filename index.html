@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paw Mood - Track Your Dogs Mood</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="assets/css/stlye.css">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
 
 
 </head>
@@ -15,9 +17,31 @@
 
 
     <header>
-        <img src="assets/image/dog pic.jpg"/>
+        <img src="assets/image/dog pic.jpg" onclick="document.getElementById('modal01').style.display='block'" class="w3-hover-opacity">
 
-        <h1 class="app-title">PawMood<i class="fa-solid fa-paw"></i></h1>
+        <div id="modal01" class="w3-modal w3-animate-zoom" onclick="this.style.display='none'">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-green"> 
+                  <span onclick="document.getElementById('id01').style.display='none'" 
+                  class="w3-button w3-large w3-display-topright">&times;</span>
+                  <h2>Welcome !!</h2>
+                </header>
+                <div class="w3-container">
+                  <p>Hello and welcome to PawMood ! Your Daily Emotional Tracker for Your Dog" This is designed to help dog owners track and monitor their dogs emotional well-being over time. By inputting your dog's mood every day, the app generates 
+                    insights into their emotional state and behavior patterns. After 7 days of data collection, the app produces an average emotional profile that gives owners a deeper understanding of their Dogs mood trends. This data-driven approach 
+                    helps pet owners identify any potential changes in their dog's emotional health, allowing for early intervention and improved care.  </p>
+                  
+                </div>
+                <footer class="w3-container w3-green">
+                  <p>Enojoy </p>
+                </footer>
+              </div>
+            </div>
+     
+        </div>
+
+        
+        <h1 class ="app-title">PawMood<i class="fa-solid fa-paw"></i></h1>
         <p>To Track Your Dog's Emotions Daily !! </p>
     </header>
 
@@ -42,6 +66,8 @@
         </div>
 
     </main>
+
+<footer> Always taking care of Mans bestfriend !! </footer>
 </div>
     <script src=""></script>
     <script src=""></script>
