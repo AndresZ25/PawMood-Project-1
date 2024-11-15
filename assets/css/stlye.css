@@ -6,13 +6,13 @@ body {
     font-family:'Times New Roman', Times, serif;
     text-align: center;
     padding: 10px 20px 30px;
-    font-size: x-large;
+
   
 }
 
 header {
     font-family: 'Times New Roman', Times, serif;
-    padding: 10px;
+    padding: 60px;
     text-align: center;
     background-color:sandybrown;
     color: rgb(15, 12, 7);
@@ -20,9 +20,30 @@ header {
 
 }
 
+footer {
+    padding: 20px;
+    background-color:sandybrown;
+    color: white;
+    font-size: 20px;
+
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin: 10px 0;
+    font-size: 60px;
+    font-weight: bolder;
+
+}
+
 textarea {
     margin-top: 50px;
     margin-left: 40px;
+    margin-left: 40px;
+    align-items: center;
+    margin-left: 40px; 
     align-items: center;
     
     
@@ -39,7 +60,7 @@ label {
 }
 
 button {
-    margin: 200px;
+    margin: 100px;
     background-color: green;
     color: white;
     padding: 20px 20px 20px;
