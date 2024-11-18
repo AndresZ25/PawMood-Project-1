@@ -1,13 +1,19 @@
-*{
-    box-sizing: border-box;
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+#moodForm{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 
 body {
     font-family:'Times New Roman', Times, serif;
     text-align: center;
     padding: 10px 20px 30px;
-
-  
 }
 
 header {
@@ -17,7 +23,6 @@ header {
     background-color:sandybrown;
     color: rgb(15, 12, 7);
     marker: none;
-
 }
 
 footer {
@@ -35,34 +40,38 @@ h1, h2, h3, h4, h5, h6 {
     margin: 10px 0;
     font-size: 60px;
     font-weight: bolder;
-
 }
 
 textarea {
-    margin-top: 50px;
-    margin-left: 40px;
-    margin-left: 40px;
-    align-items: center;
-    margin-left: 40px; 
-    align-items: center;
-    
-    
+margin: 10px;
 }
 
 select {
     padding: 10px 25px ;
-
 }
 
 label {
     font-size:x-large;
-    padding-right: 10px;
+    padding: 0px 20px;
+    margin: 10px;
+    flex: 1 1 30;
 }
 
 button {
-    margin: 100px;
-    background-color: green;
+    margin: 50px;
+    background-color: #4CAF50;
     color: white;
     padding: 20px 20px 20px;
+    flex: 1 1 30;
+}
 
+select{
+margin: 10px;
+flex: 1 1 30;
+}
+
+averageDisplay{
+    display:flex;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
 }
