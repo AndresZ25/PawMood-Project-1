@@ -3,6 +3,8 @@ const moodInput = document.getElementById('moodInput');
 const moodList = document.getElementById('moodList');
 const averageDisplay = document.getElementById('averageDisplay');
 
+
+
 let moods = ["happy","sad","tired","playful","hungry"];
 
 moodForm.addEventListener('submit', function(event) {
@@ -49,3 +51,43 @@ function updateAverageMood() {
         averageDisplay.textContent = 'N/A';
     }
 }
+
+
+async function fetchdog() {
+    const imageresponse = await fetch('https://random.dog/woof.json')
+    const imagedata = await imageresponse.json()
+    const dogUrl = imagedata.url
+    const dogContainer = document.getElementById('dogImages')
+
+    
+    dogContainer.innerHTML = '';
+
+     if (dogUrl.endsWith('.mp4') || dogUrl.endsWith('.webm')) { 
+        const video = document.createElement('video');
+         video.src = dogUrl; 
+         video.controls = true; 
+         video.autoplay = true; 
+         video.width = 600;
+          dogContainer.appendChild(video);
+      
+    } else { const img = document.createElement('img'); 
+            img.src = dogUrl; 
+            img.alt = 'Random Dog'; 
+            img.width = 600;
+             dogContainer.appendChild(img); 
+    } 
+}
+
+window.onload = fetchdog;
+
+
+async function fetchdogfacts() {
+    const factresponse = await fetch('https://dog-api.kinduff.com/api/facts')
+    const factdata = await factresponse.json()
+    const dogFact = factdata.facts[0]
+    const dogFactContainer = document.getElementById('dogFact').innerText=dogFact
+    
+}
+
+
+// 
