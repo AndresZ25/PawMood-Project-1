@@ -54,9 +54,9 @@ function updateAverageMood() {
 
 
 async function fetchdog() {
-    const response = await fetch('https://random.dog/woof.json')
-    const data = await response.json()
-    const dogUrl = data.url
+    const imageresponse = await fetch('https://random.dog/woof.json')
+    const imagedata = await imageresponse.json()
+    const dogUrl = imagedata.url
     const dogContainer = document.getElementById('dogImages')
 
     
@@ -81,3 +81,13 @@ async function fetchdog() {
 window.onload = fetchdog;
 
 
+async function fetchdogfacts() {
+    const factresponse = await fetch('https://dog-api.kinduff.com/api/facts')
+    const factdata = await factresponse.json()
+    const dogFact = factdata.facts[0]
+    const dogFactContainer = document.getElementById('dogFact').innerText=dogFact
+    
+}
+
+
+// 
