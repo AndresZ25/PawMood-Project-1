@@ -20,11 +20,16 @@ Welcome to **PawMood**! The app that helps you understand your dog's mood in rea
 2. Set up your dog’s profile by entering their name, breed, and age.
 3. Start logging your dog’s activities by tracking their walks, meals, playtime, and any behaviors you notice throughout the day.
 
+![alt text](images/image.png)
+
 ### How It Works
 
 - **Mood Analysis**: As you log your dog’s activities, PawPal will analyze their behavior and mood based on factors like body language and sounds.
 - **Real-Time Feedback**: PawMood will provide immediate insights into your dog’s mood, such as "playful," "anxious," or "tired."
 - **Personalized Tips**: Based on the mood detected, you’ll receive recommendations like extra playtime for energy, calming activities for anxiety, or suggestions for enriching their environment.
+
+
+![alt text](images/image2.png)
 
 ---
 
