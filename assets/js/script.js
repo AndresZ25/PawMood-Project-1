@@ -1,57 +1,96 @@
 const moodForm = document.getElementById('moodForm');
 const moodInput = document.getElementById('moodInput');
+const notesInput = document.getElementById('notes');
 const moodList = document.getElementById('moodList');
 const averageDisplay = document.getElementById('averageDisplay');
+let storedMoods = [];
 
+window.onload = function() {
+    loadMoods();
+}
 
+moodForm.onsubmit = function(event) {
+    event.preventDefault(); 
 
-let moods = ["happy","sad","tired","playful","hungry"];
+    const mood = moodInput.value;
+    const notes = notesInput.value;
+    const today = new Date().toISOString().split('T')[0];
 
-moodForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+    const existingMoodIndex = storedMoods.findIndex(entry => entry.date === today);
 
-    // Get the mood value from input
-    const mood = parseInt(moodInput.value);
-    
-    // Ensure mood is between 1 and 5
-    if (mood >= 1 && mood <= 5) {
-        // Add the mood to the array
-        moods.push(mood);
-
-        // Update the mood list display
-        updateMoodList();
+    if (existingMoodIndex !== -1) {
         
-        // Update the average mood display
-        updateAverageMood();
-
-        // Clear input field
-        moodInput.value = '';
+        storedMoods[existingMoodIndex] = {
+            mood: mood,
+            notes: notes,
+            date: today
+        };
     } else {
-        alert('');
+        
+        storedMoods.push({
+            mood: mood,
+            notes: notes,
+            date: today
+        });
     }
-});
 
-// Function to update the mood list display
-function updateMoodList() {
-    moodList.innerHTML = '';
-    moods.forEach((mood, index) => {
+    
+    localStorage.setItem('dogMoods', JSON.stringify(storedMoods));
+    displayMoods();
+    calculateAverageMood();
+     
+};
+
+function loadMoods() {
+    const savedMoods = JSON.parse(localStorage.getItem('dogMoods'));
+    if (savedMoods) {
+        storedMoods = savedMoods;
+        displayMoods();
+    }
+    calculateAverageMood();
+}
+
+
+function displayMoods() {
+    moodList.innerHTML = ''; 
+    storedMoods.forEach(moodEntry => {
         const moodItem = document.createElement('li');
-        moodItem.textContent = `Day ${index + 1}: Mood ${mood}`;
+        moodItem.textContent = `Date: ${moodEntry.date}, Mood: ${getMoodText(moodEntry.mood)}, Notes: ${moodEntry.notes}`;
         moodList.appendChild(moodItem);
     });
 }
 
-// Function to update the average mood display
-function updateAverageMood() {
-    if (moods.length > 0) {
-        const totalMood = moods.reduce((total, mood) => total + mood, 0);
-        const averageMood = (totalMood / moods.length).toFixed(2);  // Average mood
-        averageDisplay.textContent = `Your dog's average mood: ${averageMood}`;
-    } else {
-        averageDisplay.textContent = 'N/A';
+function getMoodText(moodValue) {
+    switch (moodValue) {
+        case "1": return 'Happy';
+        case "2": return 'Sad';
+        case "3": return 'Playful';
+        case "4": return 'Tired';
+        case "5": return 'Hungry';
     }
 }
 
+function calculateAverageMood() {
+    if (storedMoods.length === 0) {
+        averageDisplay.querySelector('h2').textContent = 'Average Mood: N/A';
+        return;
+    }
+
+    const totalMoodValue = storedMoods.reduce((total, moodEntry) => total + parseInt(moodEntry.mood), 0);
+    const averageMoodValue = totalMoodValue / storedMoods.length;
+    averageDisplay.querySelector('h2').textContent = `Average Mood: ${getMoodText(Math.round(averageMoodValue))}`;
+}
+
+function calculateAverageMood() {
+    if (moods.length === 0) {
+        averageDisplay.querySelector('h2').textContent = 'Average Mood: N/A';
+        return;
+    }
+
+    const totalMoodValue = moods.reduce((total, moodEntry) => total + parseInt(moodEntry.mood), 0);
+    const averageMoodValue = totalMoodValue / moods.length;
+    averageDisplay.querySelector('h2').textContent = `Average Mood: ${getMoodText(Math.round(averageMoodValue))}`;
+}
 
 async function fetchdog() {
     const imageresponse = await fetch('https://random.dog/woof.json')
@@ -88,87 +127,4 @@ async function fetchdogfacts() {
     const dogFactContainer = document.getElementById('dogFact').innerText=dogFact
     
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    const moodForm = document.getElementById("moodForm");
-    const moodInput = document.getElementById("moodInput");
-    const notesInput = document.getElementById("notes");
-    const moodList = document.getElementById("moodList");
-
-    loadMoods();
-
-    moodForm.addEventListener("submit", function(event) {
-        event.preventDefault(); 
-        const selectedMood = moodInput.value;
-        const notes = notesInput.value;
-
-        
-        saveMood(selectedMood, notes);
-
-        
-        notesInput.value = '';
-    });
-
-    function saveMood(mood, notes) {
-        const today = new Date();
-        const weekNumber = getWeekNumber(today);
-        const moodData = {
-            mood: mood,
-            notes: notes,
-            date: today.toLocaleDateString()
-        };
-
-
-        const storedMoods = JSON.parse(localStorage.getItem("weeklyMoods")) || {};
-
-        
-        if (!storedMoods[weekNumber]) {
-            storedMoods[weekNumber] = [];
-        }
-
-        
-        storedMoods[weekNumber].push(moodData);
-        localStorage.setItem("weeklyMoods", JSON.stringify(storedMoods));
-
-        
-        loadMoods();
-    }
-
-    function loadMoods() {
-        const storedMoods = JSON.parse(localStorage.getItem("weeklyMoods")) || {};
-        const weekNumber = getWeekNumber(new Date());
-        moodList.innerHTML = ''; 
-
-        if (storedMoods[weekNumber]) {
-            storedMoods[weekNumber].forEach(entry => {
-                const listItem = document.createElement("li");
-                listItem.textContent = `Mood: ${getMoodName(entry.mood)} | Notes: ${entry.notes} | Date: ${entry.date}`;
-                moodList.appendChild(listItem);
-            });
-        } else {
-            moodList.innerHTML = '<li>No moods recorded for this week.</li>';
-        }
-    }
-
-    function getMoodName(moodValue) {
-        switch (moodValue) {
-            case '1': return 'Happy';
-            case '2': return 'Sad';
-            case '3': return 'Playful';
-            case '4': return 'Tired';
-            case '5': return 'Hungry';
-            default: return 'Unknown Mood';
-        }
-    }
-
-    function getWeekNumber(d) {
-    
-        const date = new Date(d);
-        const oneJan = new Date(date.getFullYear(), 0, 1);
-        const numberOfDays = Math.floor((date - oneJan) / (24 * 60 * 60 * 1000));
-        return Math.ceil((date.getDay() + 1 + numberOfDays) / 7);
-    }
-});
-       
-
 
