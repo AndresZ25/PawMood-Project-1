@@ -46,7 +46,7 @@ If you have any questions or run into issues while using PawPal, feel free to co
 
 - **Email**: support@pawmood.com
 - **Phone**: (123) 456-7890
-- **Website**: 
+- **Website**:  https://andresz25.github.io/PawMood-Project-1/
 
 ---
 
